@@ -1,0 +1,10 @@
+<div class="houses">
+    <app-title title="Casas de Hogwards"></app-title>
+    <app-houses-nav></app-houses-nav>
+    <app-spinner *ngIf="loading"></app-spinner>
+    <app-grid-character-card [characters]="characters"></app-grid-character-card>
+    <div class="msg">
+        <h3>Selecciona una Casa</h3>
+    </div>
+    <br>
+</div>

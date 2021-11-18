@@ -1,0 +1,27 @@
+@import "./../../../../styles"
+.cover
+    background-color: #7e7e7e7a
+    display: flex
+    flex-direction: column
+    justify-items: center
+    color: lighten($gris, 60%)
+    padding-bottom: $sep
+    img
+        max-width: 50%
+        margin: $sep auto
+        margin-bottom: $sep/3
+        @include responsivetablet()
+            max-width: 60%
+        @include responsivephone()
+            max-width: 80%
+    h1
+        text-align: center
+        font-size: 5rem
+        @include responsivephone()
+            font-size: 4rem
+    h2
+        text-align: center
+        font-size: 3rem
+        @include responsivephone()
+            font-size: 2.3rem
+        

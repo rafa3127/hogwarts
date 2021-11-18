@@ -1,0 +1,28 @@
+@import "./../../../styles.sass"
+.navbar-toggler
+    border: none
+    &:focus
+        outline: none
+        box-shadow: none
+
+.navbar-brand
+    display: flex
+    flex-direction: row
+    max-width: 60%
+    align-items: center
+    .title
+        font-size: 2rem
+        @include responsivephone()
+            font-size: 1.2rem
+
+.nav-item
+    @include responsivetablet()
+        text-align: center
+    &:hover
+        background-color: lighten($gris, 50%)
+        a
+            color: $claro
+
+
+    
+

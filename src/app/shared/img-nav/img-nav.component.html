@@ -1,0 +1,8 @@
+<nav class="img-nav container">
+    <div class="row">
+        <a class="col-6 col-sm" *ngFor="let element of elements" routerLink="{{element.route}}" routerLinkActive="active">
+            <img src="{{element.img}}" alt="{{element.title}}">
+            <h3>{{element.title}}</h3>
+        </a>
+    </div>
+</nav>

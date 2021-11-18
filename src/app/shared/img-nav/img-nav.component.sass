@@ -1,0 +1,27 @@
+@import "../../../styles"
+.img-nav
+    width: 100%
+    background-color: $claro
+    a
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: space-around
+        color: $oscuro
+        text-decoration: none
+        font-size: 2rem
+        &.active
+            // background-color: lighten($gris,50% )
+            -webkit-box-shadow: 0px 0px 22px 12px rgba(0,0,0,0.27)
+            box-shadow: 0px 0px 22px 12px rgba(0,0,0,0.27)
+            h3
+                font-size:3rem
+
+            img
+                max-width: 100%
+    img
+        max-width: 80%
+        margin: 0 auto
+
+
+    

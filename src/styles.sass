@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+/*-----------------------------------------EXTERN-ELEMENTS----------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap')
+    
+/*-------------------------------------------VARIABLES------------------------------------------------/
+
+//colors
+$cprincipal: #023047
+$csecundario: #219EBC
+$cterciario: #FFB703
+$oscuro: #000000
+$claro: #fff
+$gris: #525151
+$cbg: lighten(#8ECAE6, 60%)
+
+
+//Fonts
+$fprincipal: 'EB Garamond', serif
+$fsecundario: 'Lato', 'sans-serif'
+
+
+//Media Queries
+$desk: 770px
+$tablet: 769px
+$mobile: 540px
+
+//seps
+$sep: 5rem
+
+
+
+/*-------------------------------------------------MIXINS-------------------------------------------------*/
+
+@mixin responsivedesk()
+    @media ( min-width: $desk )
+        @content
+
+@mixin responsivetablet()
+    @media ( max-width: $tablet )
+        @content
+        
+@mixin responsivephone()
+    @media ( max-width: $mobile )
+        @content
+        
+
+/*------------------------------------------------GLOBALS--------------------------------------------------*/
+
+html
+    font-size: 62.5%
+    box-sizing: border-box
+*,*:before, *:after
+    box-sizing: inherit
+
+body 
+    margin: 0 
+    font-family: $fprincipal
+    font-size: 1.6rem
+    background-color: $cbg
+    &.fijar-body
+        overflow: hidden
+p 
+    font-size: 2rem
+    color: $oscuro    
+
+.container
+    max-width: 90%
+

@@ -1,0 +1,28 @@
+
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="./../../../assets/Hogwarts-Logo-medium.png" alt="" width="60" height="30" class="d-inline-block align-text-top">
+            <div class="title">Colegio Hogwarts | Mágia y Hechicería</div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav" >
+        <ul class="navbar-nav d-flex">
+            <li class="nav-item">
+            <a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" routerLink="/houses" routerLinkActive="active">Casas</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" routerLink="/students" routerLinkActive="active">Estudiantes</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" routerLink="/staff" routerLinkActive="active">Profesores</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+</nav>
