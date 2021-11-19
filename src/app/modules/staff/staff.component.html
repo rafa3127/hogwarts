@@ -1,4 +1,12 @@
 <div class="staff">
+    <!-- render del componente compartido title con el título de la sección -->
     <app-title title="Profesores de Hogwarts"></app-title>
+    <!-- render del componente de spinner de carga -->
+    <app-spinner *ngIf="loading"></app-spinner>
+    <!-- render del componente compartido section-refresh -->
+    <app-section-refresh *ngIf="!loading && characters.length == 0" route="/staff"></app-section-refresh>
+    <!-- render del componente compartido de filtros -->
+    <app-filters *ngIf="characters.length > 0 && !loading" [characters]="characters" [loaderFunction]="loaderFunction" (filter)="filter($event)"></app-filters>
+    <!-- render del componente compartido de grid de tarjetas de personaje con personajes de la sección "Profesores" -->
     <app-grid-character-card [characters]="characters"></app-grid-character-card>
 </div>

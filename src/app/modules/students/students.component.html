@@ -1,2 +1,10 @@
-<app-title title="Estudiantes de Hogward"></app-title>
-<app-grid-character-card [characters]="characters"></app-grid-character-card>
+<div class="students">
+    <!-- render del componente compartido title con el título de la sección -->
+    <app-title title="Estudiantes de Hogward"></app-title>
+    <!-- render del componente de spinner de carga -->
+    <app-filters *ngIf="characters.length > 0 && !loading" [characters]="characters" [loaderFunction]="loaderFunction" (filter)="filter($event)"></app-filters>
+    <!-- render del componente compartido section-refresh -->
+    <app-section-refresh *ngIf="!loading && characters.length == 0" route="/students"></app-section-refresh>
+    <!-- render del componente compartido de grid de tarjetas de personaje con personajes de la sección "Estudiantes" -->
+    <app-grid-character-card [characters]="characters"></app-grid-character-card>
+</div>

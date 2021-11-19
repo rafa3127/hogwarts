@@ -1,7 +1,10 @@
+<!-- CONTENEDOR DE BARRA DE NAVEGACIÓN CON IMÁGENES -->
 <nav class="img-nav container">
     <div class="row">
         <a class="col-6 col-sm" *ngFor="let element of elements" routerLink="{{element.route}}" routerLinkActive="active">
+            <!-- imágen del elemento de la barra de navegación -->
             <img src="{{element.img}}" alt="{{element.title}}">
+            <!-- título del elemento de la barra de navegación -->
             <h3>{{element.title}}</h3>
         </a>
     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { filter } from 'rxjs';
 import { CharactersService  } from 'src/app/core/characters.service';
 
 @Component({
@@ -8,10 +9,11 @@ import { CharactersService  } from 'src/app/core/characters.service';
   styleUrls: ['./houses.component.sass']
 })
 export class HousesComponent implements OnInit {
-  house: string 
-  characters: any 
-  loading: boolean = false
-  public slideElements: Array<any> = [
+  house: string //Casa de la cual se requieren los personajes
+  characters: any //arreglo de personajes de la casa seleccionada
+  loading: boolean = false //Flag de carga
+  loaderFunction: Function  //Función de reinicio de arreglo de personajes
+  slideElements: Array<any> = [
     {title: "Slytherin",
      img: "./assets/houses/Slytherin.png",
      subtitle: ""},
@@ -24,23 +26,24 @@ export class HousesComponent implements OnInit {
     {title: "Ravenclaw",
      img: "./assets/houses/Ravenclaw.png",
      subtitle: ""},
-  ]
+  ] //Elementos para el renderizado de la barra de navegación con imágenes
   
   constructor(
     public activeRoute:ActivatedRoute,
-    private characterService: CharactersService
+    private charactersService: CharactersService
     ) { 
     this.house = ""
     this.characters = []
+    this.loaderFunction = () => this.charactersService.getCharactersByHouse(`${this.house}`) //Se declara una arrow function para poder enviar el parámetro "house" a componentes hijos
   }
   
   ngOnInit(): void {
+  //Se corre la función loadCharacters para la primera carga de personajes, extrayendo los parámetros por URL
     this.activeRoute.paramMap.subscribe( params => {
       this.house = JSON.parse(this.activeRoute.snapshot.params["house"]) ? JSON.parse(this.activeRoute.snapshot.params["house"]).house : ""
       this.loading = true
-      console.log(this.house)
       if(this.house !== ""){
-        this.search(this.house)
+        this.loadCharacters()
         this.loading = false
       }else{
         this.characters = []
@@ -49,19 +52,23 @@ export class HousesComponent implements OnInit {
     })
   }
 
-  search(house: string){
-    this.characterService.getCharactersByHouse(this.house).subscribe( data =>{
-      this.characters = data.map( (c:any) => {
-        return (
-          {
-            name: c.name,
-            patronus: c.patronus,
-            img: c.image !== "" ? c.image : "./assets/user-not-found.png",
-            age: c.yearOfBirth !== "" ? (new Date().getFullYear() - parseInt(c.yearOfBirth)).toString(): "No disponible"
-          }
-        )
-      })
+  /*------------------------Funciones------------------------*/
+
+  /* 
+    Se obtienen los personajes de la casa seleccionada a través de charactersService
+  */
+  loadCharacters(): any{
+    this.charactersService.getCharactersByHouse(this.house).subscribe( data =>{
+      this.characters = data.map( (c:any) => this.charactersService.filterCharacterData(c))
+      return this.characters
     })
+  }
+
+  /*  
+    Se carga el arreglo de personajes al recibir un evento de componente compartido de filtros
+  */
+  filter(characters: Array<any>){
+    this.characters = characters
   }
 
 }

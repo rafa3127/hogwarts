@@ -1,5 +1,7 @@
 <div class="content" role="main">
-  <app-nav-bar></app-nav-bar>
+  <!-- barra de navegación -->
+  <app-nav-bar [elements]="navElements"></app-nav-bar>
+  <!-- contenido de la APP -->
   <div class="content-container">
     <router-outlet></router-outlet>
   </div>

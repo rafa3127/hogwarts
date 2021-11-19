@@ -8,29 +8,38 @@ import { CharactersService } from 'src/app/core/characters.service';
   styleUrls: ['./students.component.sass']
 })
 export class StudentsComponent implements OnInit {
-  characters: Array<any>
+  characters: Array<any> //arreglo de personajes
+  loading: boolean = false //Flag de carga
+  loaderFunction: Function //Función de reinicio de arreglo de personajes
   constructor(
     public activeRoute:ActivatedRoute,
-    private characterService: CharactersService
+    private charactersService: CharactersService
   ) { 
     this.characters = []
+    this.loaderFunction = this.charactersService.getStudents
   }
 
   ngOnInit(): void {
+    //se corre la función loadStudents para la primera carga de personajes
     this.loadStudents()
   }
+
+  /*------------------------Funciones------------------------*/
+
+  /* 
+    Se obtienen los personajes
+  */
   loadStudents(){
-    this.characterService.getStudents().subscribe( data =>{
-      this.characters = data.map( (c:any) => {
-        return (
-          {
-            name: c.name,
-            patronus: c.patronus,
-            img: c.image !== "" ? c.image : "./assets/user-not-found.png",
-            age: c.yearOfBirth !== "" ? (new Date().getFullYear() - parseInt(c.yearOfBirth)).toString(): "No disponible"
-          }
-        )
-      })
+    this.loading = true
+    this.charactersService.getStudents().subscribe( data =>{
+      this.characters = data.map( (c:any) => this.charactersService.filterCharacterData(c))
+      this.loading = false
     })
+  }
+  /*  
+    Se carga el arreglo de personajes al recibir un evento de componente compartido de filtros
+  */
+  filter(characters: Array<any>){
+    this.characters = characters
   }
 }

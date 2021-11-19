@@ -6,10 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./character-card.component.sass']
 })
 export class CharacterCardComponent implements OnInit {
-  @Input() name : string = ""
-  @Input() img : string = ""
-  @Input() age: string = ""
-  @Input() patronus: string = ""
+  /* --------Inputs de renderización del componente-------*/
+  @Input() name : string = "" //Nombre del personaje
+  @Input() img : string = "" //Ruta de la imagen del personaje
+  @Input() age: string = "" //Edad del personaje
+  @Input() patronus: string = "" //Patronus del personaje
   constructor() { }
 
   ngOnInit(): void {

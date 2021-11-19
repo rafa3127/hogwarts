@@ -7,9 +7,16 @@ import { TitleComponent } from './title/title.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { CharacterCardComponent } from './character-card/character-card.component';
 import { GridCharacterCardComponent } from './grid-character-card/grid-character-card.component';
+import { FiltersComponent } from './filters/filters.component';
+import { OrderByNamesComponent } from './filters/order-by-names/order-by-names.component';
+import { OrderByAgeComponent } from './filters/order-by-age/order-by-age.component';
+import { SearchComponent } from './filters/search/search.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SectionRefreshComponent } from './section-refresh/section-refresh.component';
 
 
 
+/* ESTE MÓDULO DECLARA Y EXPORTA LOS COMPONENTES REUTILIZABLES */
 @NgModule({
   declarations: [
     NavBarComponent,
@@ -18,10 +25,17 @@ import { GridCharacterCardComponent } from './grid-character-card/grid-character
     SpinnerComponent,
     CharacterCardComponent,
     GridCharacterCardComponent,
+    FiltersComponent,
+    OrderByNamesComponent,
+    OrderByAgeComponent,
+    SearchComponent,
+    SectionRefreshComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     NavBarComponent,
@@ -30,6 +44,9 @@ import { GridCharacterCardComponent } from './grid-character-card/grid-character
     SpinnerComponent,
     CharacterCardComponent,
     GridCharacterCardComponent,
+    FiltersComponent,
+    SearchComponent,
+    SectionRefreshComponent,
   ]
 })
 export class SharedModule { }

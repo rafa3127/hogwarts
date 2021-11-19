@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Hogwarts';
+  navElements: Array<any> = [
+    {route:"/home", linkName:"Inicio", exact:true},
+    {route:"/houses", linkName:"Casas"},
+    {route:"/students", linkName:"Estudiantes"},
+    {route:"/staff", linkName:"Profesores"}, 
+  ] //Elementos de la barra de navegación
+
+
 }

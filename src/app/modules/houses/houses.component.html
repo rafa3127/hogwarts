@@ -1,10 +1,20 @@
 <div class="houses">
+    <!-- render del componente compartido title con el título de la sección -->
     <app-title title="Casas de Hogwards"></app-title>
+    <!-- render del componente la barra de navegación de la sección de "Casas" -->
     <app-houses-nav></app-houses-nav>
+    <!-- render del componente de spinner de carga -->
     <app-spinner *ngIf="loading"></app-spinner>
-    <app-grid-character-card [characters]="characters"></app-grid-character-card>
-    <div class="msg">
+    <!-- render del componente compartido section-refresh -->
+    <app-section-refresh *ngIf="!loading && characters.length == 0 && house !== ''" route="/houses"></app-section-refresh>
+    <!-- CTA -->
+    <div *ngIf="characters.length == 0 && !loading"  class="msg">
         <h3>Selecciona una Casa</h3>
     </div>
+    <!-- render del componente compartido de filtros -->
+    <app-filters *ngIf="characters.length > 0 && !loading" [characters]="characters" [loaderFunction]="loaderFunction" (filter)="filter($event)"></app-filters>
+    <!-- render del componente compartido de grid de tarjetas de personaje con personajes de la sección "casas" -->
+    <app-grid-character-card [characters]="characters"></app-grid-character-card>
+
     <br>
 </div>

@@ -6,8 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./grid-character-card.component.sass']
 })
 export class GridCharacterCardComponent implements OnInit {
-
-  @Input() characters: Array<any> = []
+  /* --------Inputs de renderización del componente-------*/  
+  @Input() characters: Array<any> = [] //Arreglo de personajes a renderizar
   constructor() { }
 
   ngOnInit(): void {

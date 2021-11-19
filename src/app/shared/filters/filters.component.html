@@ -1,0 +1,15 @@
+<!-- BATERÍA DE FILTROS PARA SECCIONES QUE MUESTRAN PERSONAJES -->
+<div class="filters container">
+    <div>
+        <!-- Render de las funciones de ordenar por nombre -->
+        <app-order-by-names [characters]="characters" (orderByName)="filterFunction($event)"></app-order-by-names>
+    </div>
+    <div>
+        <!-- Render de las funciones de ordenar por edad -->
+        <app-order-by-age [characters]="characters" (orderByAge)="filterFunction($event)"></app-order-by-age>
+    </div>
+    <div>
+        <!-- Render de las funciones de buscador por Nombre y Patronus -->
+        <app-search [characters]="characters" [loaderFunction]="loaderFunction" (searchEmitter)="filterFunction($event)"></app-search>
+    </div>
+</div>

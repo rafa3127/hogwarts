@@ -6,15 +6,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./img-nav.component.sass']
 })
 export class ImgNavComponent implements OnInit {
+   /* --------Inputs de renderización del componente-------*/
+  @Input() elements: Array<any> = []
   /*
     element:
     {
-      img: string:image-root,
-      title: string
-      route: string: route
+      img: string (ruta de la imágen del elemento)
+      title: string (título del elmento)
+      route: string: (Ruta a la que se desea navegar al dar click)
     }
   */
-  @Input() elements: Array<any> = []
   constructor() { }
 
   ngOnInit(): void {

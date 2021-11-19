@@ -8,31 +8,40 @@ import { CharactersService } from 'src/app/core/characters.service';
   styleUrls: ['./staff.component.sass']
 })
 export class StaffComponent implements OnInit {
-  characters: Array<any>
+  loading: boolean = false //Flag de carga
+  loaderFunction: Function //Función de reinicio de arreglo de personajes
+  characters: Array<any> //arreglo de personajes
   constructor(
     public activeRoute:ActivatedRoute,
-    private characterService: CharactersService
+    private charactersService: CharactersService
   ) {
     this.characters = []
+    this.loaderFunction = this.charactersService.getStaff
   }
 
   ngOnInit(): void {
+    //se corre la función loadStaff para la primera carga de personajes
     this.loadStaff()
   }
+  /*------------------------Funciones------------------------*/
 
-  loadStaff(){
-    this.characterService.getStaff().subscribe( data =>{
-      this.characters = data.map( (c:any) => {
-        return (
-          {
-            name: c.name,
-            patronus: c.patronus,
-            img: c.image !== "" ? c.image : "./assets/user-not-found.png",
-            age: c.yearOfBirth !== "" ? (new Date().getFullYear() - parseInt(c.yearOfBirth)).toString(): "No disponible"
-          }
-        )
-      })
+  /* 
+    Se obtienen los personajes
+  */
+  loadStaff(): any{
+    this.loading = true
+    this.charactersService.getStaff().subscribe( data =>{
+      this.characters = data.map( (c:any) => this.charactersService.filterCharacterData(c))
+      this.loading = false
+      return this.characters
     })
   }
+  /*  
+    Se carga el arreglo de personajes al recibir un evento de componente compartido de filtros
+  */
+  filter(characters: Array<any>){
+    this.characters = characters
+  }
+
 
 }
