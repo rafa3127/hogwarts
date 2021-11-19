@@ -15,7 +15,7 @@ export class CharactersService {
 
   /* 
     Hacer request a la API de personajes según las casas a las que pertenece
-    params: house: string (casa de Hogwards a la que pertenece)
+    params: house: string (casa de Hogwarts a la que pertenece)
     response: Function (request a la API)
   */
  getCharactersByHouse(house: string){
