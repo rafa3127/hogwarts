@@ -1,0 +1,54 @@
+<div class="background">
+    <div class="win-modal">
+        <div class="title">
+            <h2>Crear Solicitud</h2>
+            <a class="close-btn" (click)="closeFunction()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                </svg>
+            </a>
+        </div>
+
+        <form class="container" method="post" id="" [formGroup]="form">
+            <div  *ngIf="alertform" class="alert alert-danger" role="alert">
+                No se pudo generar la solicitud
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <label class="form-label" for="name">*Nombre:</label>
+                    <input type="text" name="name" id="name" class="form-control" formControlName="name">
+                </div>
+                <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)" class="alert alert-danger" role="alert">
+                    <div *ngIf="form.controls['name'].errors?.['required']">
+                        Debe ingresar un nombre.
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <label class="form-label" for="age">*Edad:</label>
+                    <input type="text" name="age" id="age" class="form-control" formControlName="age">
+                </div>
+                <div *ngIf="form.controls['age'].invalid && (form.controls['age'].dirty || form.controls['age'].touched)"class="alert alert-danger" role="alert">
+                    <div *ngIf="form.controls['age'].errors?.['required']">
+                        Debe ingresar una edad.
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <label class="form-label" for="patronus">Patronus:</label>
+                    <input type="text" name="patronus" id="patronus" class="form-control" formControlName="patronus">
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <label class="form-label" for="img">URL de la Imagen:</label>
+                    <input type="text" name="img" id="img" class="form-control" formControlName="img">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="createApplication()">Enviar</button>
+        </form>
+    </div>
+</div>

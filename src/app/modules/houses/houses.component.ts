@@ -39,15 +39,13 @@ export class HousesComponent implements OnInit {
   
   ngOnInit(): void {
   //Se corre la función loadCharacters para la primera carga de personajes, extrayendo los parámetros por URL
+  
     this.activeRoute.paramMap.subscribe( params => {
       this.house = JSON.parse(this.activeRoute.snapshot.params["house"]) ? JSON.parse(this.activeRoute.snapshot.params["house"]).house : ""
-      this.loading = true
       if(this.house !== ""){
         this.loadCharacters()
-        this.loading = false
       }else{
         this.characters = []
-        this.loading = false
       }
     })
   }
@@ -58,8 +56,10 @@ export class HousesComponent implements OnInit {
     Se obtienen los personajes de la casa seleccionada a través de charactersService
   */
   loadCharacters(): any{
+    this.loading = true
     this.charactersService.getCharactersByHouse(this.house).subscribe( data =>{
       this.characters = data.map( (c:any) => this.charactersService.filterCharacterData(c))
+      this.loading = false
       return this.characters
     })
   }

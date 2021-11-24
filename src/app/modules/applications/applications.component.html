@@ -1,0 +1,16 @@
+<div class="students">
+    <!-- render del componente compartido title con el título de la sección -->
+    <app-title title="Solicitudes Pendientes de Hogward"></app-title>
+    <!-- botón para abrir el modal de solicitudes -->
+    <div class="addButton container">
+        <a  class="btn btn-secondary mb-3 text-center" (click)="toggleCreateModal()">Crear una Solicitud</a>
+    </div>
+    <!-- render del componente compartido de filtros -->
+    <app-filters *ngIf="characters.length > 0" [characters]="characters" [loaderFunction]="loaderFunction" (filter)="filter($event)"></app-filters>
+    <!-- render del componente compartido section-refresh -->
+    <app-section-refresh *ngIf="characters.length == 0" route="/applications"></app-section-refresh>
+    <!-- render del componente compartido de grid de tarjetas de personaje con personajes de la sección "Estudiantes" -->
+    <app-grid-character-card [characters]="characters"></app-grid-character-card>
+    <!-- render del componente compartido de creación de solicitud -->
+    <app-application-form *ngIf="createModal" (application)="createApplication($event)" (close)="toggleCreateModal()"></app-application-form>
+</div>

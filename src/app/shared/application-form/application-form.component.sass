@@ -1,0 +1,47 @@
+@import "../../../styles"
+.background
+    background-color: rgba(0, 0, 0, .8)
+    position: fixed
+    right: 0
+    top: 0
+    left: 0
+    bottom: 0
+    margin: 0
+    width: 100%
+    min-width: 100%
+    height: 100%
+    min-height: 100%
+    .win-modal
+        background: $claro
+        margin: $sep*3 auto
+        width: 50%
+        max-width: 60rem
+        @include responsivetablet
+            margin: 15vh auto
+            width: 95%
+            max-width: none
+        .title
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            background-color: $claro
+            border-bottom: $gris solid 2px
+            h2, .close-btn
+                font-size: 2.5rem
+                padding: $sep/5
+                color: lighten($gris, 40%)
+                text-transform: uppercase
+            .close-btn
+                display: flex
+                flex-direction: row
+                align-items: center
+                &:hover
+                    color: $cprincipal
+
+form
+    margin: $sep/3 auto
+    color: lighten($gris, 20%)
+    .btn
+        width: 100%
+        margin-bottom: $sep/3
+

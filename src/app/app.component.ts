@@ -13,6 +13,7 @@ export class AppComponent {
     {route:"/houses", linkName:"Casas"},
     {route:"/students", linkName:"Estudiantes"},
     {route:"/staff", linkName:"Profesores"}, 
+    {route:"/applications", linkName:"Solicitudes"}, 
   ] //Elementos de la barra de navegación
 
 

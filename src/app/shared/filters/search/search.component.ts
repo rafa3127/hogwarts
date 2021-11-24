@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ApiService } from 'src/app/core/api-config/api-config.service';
+import { ApplicationsService } from 'src/app/core/applications.service';
 import { CharactersService } from 'src/app/core/characters.service';
+import { UtilitiesService } from 'src/app/core/utilities.service';
 
 @Component({
   selector: 'app-search',
@@ -17,7 +19,9 @@ export class SearchComponent implements OnInit {
   search = new FormControl("")
   constructor(
     private charactersService: CharactersService,
-    private api: ApiService
+    private applicationsService: ApplicationsService,
+    private api: ApiService,
+    private utilities: UtilitiesService
   ) { }
 
   ngOnInit(): void {
@@ -28,7 +32,11 @@ export class SearchComponent implements OnInit {
   */
   sendSearch(){
       this.loaderFunction().subscribe( (data: Array<any>) =>{
-        var characterArray = data.map(c=>this.charactersService.filterCharacterData(c))
+        if(data[0].name && data[0].patronus && data[0].age && data[0].img){
+          var characterArray:any = data
+        }else{
+          var characterArray:any = data.map(c=>this.charactersService.filterCharacterData(c))
+        }
         var newCharactersArray = this.charactersService.search(characterArray, this.search.value)
         this.searchEmitter.emit(newCharactersArray)
       })

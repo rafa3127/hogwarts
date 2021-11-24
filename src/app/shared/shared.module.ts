@@ -13,6 +13,7 @@ import { OrderByAgeComponent } from './filters/order-by-age/order-by-age.compone
 import { SearchComponent } from './filters/search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SectionRefreshComponent } from './section-refresh/section-refresh.component';
+import { ApplicationFormComponent } from './application-form/application-form.component';
 
 
 
@@ -30,6 +31,7 @@ import { SectionRefreshComponent } from './section-refresh/section-refresh.compo
     OrderByAgeComponent,
     SearchComponent,
     SectionRefreshComponent,
+    ApplicationFormComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { SectionRefreshComponent } from './section-refresh/section-refresh.compo
     ReactiveFormsModule
   ],
   exports:[
+    ApplicationFormComponent,
     NavBarComponent,
     ImgNavComponent,
     TitleComponent,
